@@ -7,6 +7,7 @@ import java.util.LinkedList;
 public class TopTenGamers extends JFrame {
     private LinkedList<Player> players;
     private JButton printButton; // Button for printing the list
+    private JTextArea consoleTextArea; // JTextArea to display the print statements
 
     public TopTenGamers() {
         super("Top Ten Gamers");
@@ -21,9 +22,9 @@ public class TopTenGamers extends JFrame {
         JLabel scoreLabel = new JLabel("Score:");
         JTextField scoreField = new JTextField(5);
         JButton insertButton = new JButton("Insert");
-        JLabel PrintedList = new JLabel("Print button will display in console");
-        JTextArea JT = new JTextArea(10, 10);
-        JT.append("This is a test");
+        consoleTextArea = new JTextArea(10, 10);
+        consoleTextArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(consoleTextArea);
         printButton = new JButton("Print"); // Initialize the print button
 
         // Set layout and add components to the panel
@@ -33,8 +34,7 @@ public class TopTenGamers extends JFrame {
         panel.add(scoreLabel);
         panel.add(scoreField);
         panel.add(insertButton);
-        panel.add(PrintedList);
-        panel.add(JT);
+        panel.add(scrollPane); // Add the JTextArea within a JScrollPane
         panel.add(printButton); // Add the print button to the panel
 
         // Add action listeners to the buttons
@@ -66,7 +66,7 @@ public class TopTenGamers extends JFrame {
 
         // Set frame properties
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 200);
+        setSize(300, 400);
         setVisible(true);
     }
 
@@ -93,15 +93,18 @@ public class TopTenGamers extends JFrame {
         }
     }
 
-   public void printTopTen() {
+    public void printTopTen() {
         if (players.isEmpty()) {
-            System.out.println("No players found.");
+            consoleTextArea.append("No players found.\n");
+            System.out.println("No players found");
         } else {
-            System.out.println("Top Ten Gamers:");
+            consoleTextArea.append("Top Ten Gamers:\n");
+            System.out.print("Top Ten Gamers:\n");
             int position = 1;
             for (Player player : players) {
-                // Print the top 10 players with their positions, names, and scores.
-                System.out.println(position + ". " + player.getName() + " " + player.getScore());
+                consoleTextArea.append(position + ". " + player.getName() + " " + player.getScore() + "\n");
+                System.out.println(position + ". " + player.getName() + " " + player.getScore() + "\n");
+
                 position++;
             }
         }
