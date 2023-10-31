@@ -1,6 +1,6 @@
 # prjLinkedLists
-**Top Ten Gamers**
-
+**Top Ten Gamers** <br>
+**PLEASE ONLY INPUT WHOLE NUMBERS** <br><br>
 Implement a class that maintains a list of the top 10 performers in a video game.
 An entry on the list consists of a name and score, <br> 
 and the list is kept sorted in descending order of scores.
