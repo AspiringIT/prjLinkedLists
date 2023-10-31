@@ -38,28 +38,22 @@ public class TopTenGamers extends JFrame {
         panel.add(printButton); // Add the print button to the panel
 
         // Add action listeners to the buttons
-        insertButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Get the name and score from the text fields
-                String name = nameField.getText();
-                int score = Integer.parseInt(scoreField.getText());
+        insertButton.addActionListener(e -> {
+            // Get the name and score from the text fields
+            String name = nameField.getText();
+            int score = Integer.parseInt(scoreField.getText());
 
-                // Call the insert method with the provided name and score
-                insert(name, score);
+            // Call the insert method with the provided name and score
+            insert(name, score);
 
-                // Clear the text fields after inserting a player
-                nameField.setText("");
-                scoreField.setText("");
-            }
+            // Clear the text fields after inserting a player
+            nameField.setText("");
+            scoreField.setText("");
         });
 
-        printButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Call the printTopTen method to print the list of players
-                printTopTen();
-            }
+        printButton.addActionListener(e -> {
+            // Call the printTopTen method to print the list of players
+            printTopTen();
         });
         // Add the panel to the frame
         add(panel);
@@ -112,10 +106,6 @@ public class TopTenGamers extends JFrame {
 
     public static void main(String[] args) {
         // Create an instance of the TopTenGamersGUI class
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new TopTenGamers();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(() -> new TopTenGamers());
     }
 }
